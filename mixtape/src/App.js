@@ -16,10 +16,8 @@ const App = () => {
     summary: ""
   })
 
-
 return (
   <>
-  <h1>hiiii</h1>
   <Routes>
       <Route path = "/api/playlists" element={<Navigation />}>
         <Route index element={<Index playlists={playlists} setPlaylists={setPlaylists}/>}  /> 

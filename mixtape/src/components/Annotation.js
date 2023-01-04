@@ -5,19 +5,6 @@ import Button from 'react-bootstrap/Button'
 
 const Annotation = (params) => {
 
-//     const handleTitleChange = (event)=> {
-//       console.log((event.target.value));
-//         params.setFormData({...params.formData, [event.target.name]: event.target.value}) 
-//     }
-
-//     const handleAuthorChange = (event)=> {
-//       console.log(event.target.value);
-//       params.setFormData({...params.formData, [event.target.name]: event.target.value}) 
-//   }
-//   const handleSummaryChange = (event)=> {
-//     params.setFormData({...params.formData, [event.target.name]: event.target.value}) 
-// }
-
 const handleChange = (event)=> {
     const {name, value, type, checked} = event.target
     params.setFormData(prevFormData => ({
@@ -42,8 +29,6 @@ const handleChange = (event)=> {
         })
       })
 }
-
-
     return (
       <Container className='container'fluid>
         <form onSubmit={handleNewPlaylist}> 
