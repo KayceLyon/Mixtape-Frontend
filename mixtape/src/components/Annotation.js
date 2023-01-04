@@ -13,16 +13,24 @@ const Annotation = (params) => {
         })) 
     }
   
-  const handleNewPlaylist = () => {
+  const handleNewPlaylist = (event) => {
+    event.preventDefault()
+    console.log(params.formData)
     axios.post(
-      'https://secret-beach-46849.herokuapp.com/api/playlist/',
+      'https://secret-beach-46849.herokuapp.com/api/playlists',
       {
         title: params.formData.title,
         author: params.formData.author,
         summary: params.formData.summary,
+        songs: [{
+            title: " ",
+            artist: " ",
+            cover: " ",
+            album: " ",
+        }],
       }).then(()=>{
         axios
-        .get('https://secret-beach-46849.herokuapp.com/api/playlist/')
+        .get('https://secret-beach-46849.herokuapp.com/api/playlists')
         .then((response)=>{
           params.setPlaylists(response.data)
         })
@@ -32,12 +40,12 @@ const Annotation = (params) => {
 
     return (
       <Container className='container'fluid>
-        <form>
+        <form onSubmit={handleNewPlaylist}> 
       <h1 >Notes</h1>
-          <input className="form-control origin" type='text' name='title' onChange={handleChange} placeholder="Title" value={params.formData.title}/><br/>
+          <input className="form-control origin" type='text' name='title' onChange={handleChange} placeholder="Title" value={params.formData.title} /><br/>
           <input className="form-control origin" type='text' name='author' onChange={handleChange} placeholder="Author" value={params.formData.author}/><br/>
           <input className="form-control origin" type='text' name='summary' onChange={handleChange} placeholder="Summary" value={params.formData.summary}/><br/>
-          <Button variant='light' type='submit' onClick={handleNewPlaylist}>Add Notes</Button>
+          <Button variant='light' type='submit'>Add Notes</Button>
           </form>
       </Container>
     )

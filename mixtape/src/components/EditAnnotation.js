@@ -15,14 +15,14 @@ const EditAnnotation = (params) => {
   
   const handleEditPlaylist = (event) => {
     axios.put(
-      `https://secret-beach-46849.herokuapp.com/api/playlist/${event._id}`,
+      `https://secret-beach-46849.herokuapp.com/api/playlists/${event._id}`,
       {
         title: params.formData.title,
         author: params.formData.author,
         summary: params.formData.summary,
       }).then(()=>{
         axios
-        .get('https://secret-beach-46849.herokuapp.com/api/playlist/')
+        .get('https://secret-beach-46849.herokuapp.com/api/playlists')
         .then((response)=>{
           params.setPlaylists(response.data)
         })

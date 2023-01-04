@@ -9,7 +9,7 @@ import EditAnnotation from './components/EditAnnotation'
 const App = () => {
 
   let [playlists, setPlaylists] = useState([])
-  const [formData, setFormData] = useState({
+  let [formData, setFormData] = useState({
     title: "",
     author: "",
     summary: ""
