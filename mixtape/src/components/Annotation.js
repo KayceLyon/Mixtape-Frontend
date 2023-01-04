@@ -51,6 +51,7 @@ const Annotation = (params) => {
           <input className="form-control origin" type='text' name='title' onChange={handleTitleChange} placeholder="Title" /><br/>
           <input className="form-control origin" type='text' name='author' onChange={handleAuthorChange} placeholder="Author" /><br/>
           <input className="form-control origin" type='text' name='summary' onChange={handleSummaryChange} placeholder="Summary" /><br/>
+          addsong? <br/>
           <Button variant='light' type='submit' >Add Notes</Button>
           </form>
       </Container>
