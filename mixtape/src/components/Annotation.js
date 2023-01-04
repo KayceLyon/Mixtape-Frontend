@@ -5,17 +5,12 @@ import Button from 'react-bootstrap/Button'
 
 const Annotation = (params) => {
 
-    const handleTitleChange = (event)=> {
-      console.log((event.target.value));
-        params.setFormData({...params.formData, [event.target.name]: event.target.value}) 
-    }
-
-    const handleAuthorChange = (event)=> {
-      console.log(event.target.value);
-      params.setFormData({...params.formData, [event.target.name]: event.target.value}) 
-  }
-  const handleSummaryChange = (event)=> {
-    params.setFormData({...params.formData, [event.target.name]: event.target.value}) 
+const handleChange = (event)=> {
+    const {name, value, type, checked} = event.target
+    params.setFormData(prevFormData => ({
+        ...prevFormData,
+        [name]: type === "checkbox" ? checked: value
+    })) 
 }
   
   const handleNewPlaylist = (event) => {
@@ -34,15 +29,13 @@ const Annotation = (params) => {
         })
       })
 }
-
-
     return (
       <Container className='container'fluid>
-        <form>
+        <form onSubmit={handleNewPlaylist}> 
       <h1 >Notes</h1>
-          <input className="form-control origin" type='text' name='title' onChange={handleTitleChange} placeholder="Title" /><br/>
-          <input className="form-control origin" type='text' name='author' onChange={handleAuthorChange} placeholder="Author" /><br/>
-          <input className="form-control origin" type='text' name='summary' onChange={handleSummaryChange} placeholder="Summary" /><br/>
+          <input className="form-control origin" type='text' name='title' onChange={handleChange} placeholder="Title" value={params.formData.title} /><br/>
+          <input className="form-control origin" type='text' name='author' onChange={handleChange} placeholder="Author" value={params.formData.author}/><br/>
+          <input className="form-control origin" type='text' name='summary' onChange={handleChange} placeholder="Summary" value={params.formData.summary}/><br/>
           <Button variant='light' type='submit' onClick={handleNewPlaylist}>Add Notes</Button>
           </form>
       </Container>

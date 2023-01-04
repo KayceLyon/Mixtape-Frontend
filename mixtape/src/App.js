@@ -16,13 +16,14 @@ const App = () => {
     summary: ""
   })
 
+  const [searchParams, setSearchParams] = useSearchParams({query: ""})
+  const [filteredPlaylists, setFilteredPlaylists] = useState([])
 
 return (
   <>
-  <h1>Mixtape</h1>
   <Routes>
-      <Route path = "/api/playlists" element={<Navigation />}>
-        <Route index element={<Index playlists={playlists} setPlaylists={setPlaylists}/>}  /> 
+      <Route path = "/api/playlists" element={<Navigation searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists}/>}>
+        <Route index element={<Index searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists}/>}  /> 
         <Route path="new" element={<Annotation formData={formData} setFormData={setFormData} setPlaylists={setPlaylists}/>} />
         <Route path="edit/:id" element={<EditAnnotation />} />
 
