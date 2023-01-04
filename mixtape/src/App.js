@@ -7,13 +7,25 @@ import Annotation from './components/Annotation'
 import EditAnnotation from './components/EditAnnotation'
 
 const App = () => {
+
+
+  let [playlists, setPlaylists] = useState([])
+  const [formData, setFormData] = useState({
+    title: "",
+    author: "",
+    summary: ""
+  })
+
+
 return (
   <>
   <Routes>
       <Route path = "/api/playlists" element={<Navigation />}>
+
         <Route index element={<Index />} /> 
         <Route path="new" element={<Annotation />} />
         <Route path="edit/:id" element={<EditAnnotation />} />
+
       </Route>
       <Route path="/" element={<Navigate to="/api/playlists" />} />
     </Routes>
