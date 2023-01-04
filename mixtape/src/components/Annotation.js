@@ -6,11 +6,7 @@ import Button from 'react-bootstrap/Button'
 const Annotation = (params) => {
 
     const handleChange = (event)=> {
-        const {name, value, type} = event.target
-        params.setFormData(prevFormData => ({
-            ...prevFormData,
-            
-        })) 
+        params.setFormData({ ...title, [event.target.text]: event.target.value})
     }
   
   const handleNewPlaylist = () => {
