@@ -39,7 +39,10 @@ const Index = (params) => {
                             author={playlist.author} 
                             summary={playlist.summary} 
                             />       
-                          </Col>  )})} 
+                            </Col>                  
+                           
+                          )
+                        })}
             </Row>
         </main>         
     </Container>

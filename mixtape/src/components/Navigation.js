@@ -43,6 +43,7 @@ const Navigation = (params) => {
         </Navbar>
       ))}
       <Outlet />
+
        </>
   );
 }
