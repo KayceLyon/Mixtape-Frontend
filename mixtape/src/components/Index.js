@@ -31,8 +31,8 @@ const Index = (params) => {
         <main id="Index">
           <h1>Playlists</h1>
             <Row xs={1} md={2} lg={3} className="g-4">
-                {params.playlists.map((playlist)=>{ 
-                    return(
+                 {params.playlists.map((playlist)=>{ 
+                   return(
                         <Col key={playlist._id}>
                              <Playlists 
                             title ={playlist.title} 

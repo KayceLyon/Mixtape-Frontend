@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
+
 import Login from './Login'
 import Logout from './Logout'
 import Search from './Search'
@@ -44,6 +45,7 @@ const Navigation = (params) => {
         </Navbar>
       ))}
       <Outlet />
+>>>>>>> 8e991eb5eab17328d4127769bcb9cb5ca459a81e
        </>
   );
 }

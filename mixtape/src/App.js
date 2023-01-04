@@ -8,6 +8,7 @@ import EditAnnotation from './components/EditAnnotation'
 
 const App = () => {
 
+  
   let [playlists, setPlaylists] = useState([])
   let [formData, setFormData] = useState({
     title: "",
@@ -15,13 +16,16 @@ const App = () => {
     summary: ""
   })
 
+
 return (
   <>
+  <h1>hiiii</h1>
   <Routes>
       <Route path = "/api/playlists" element={<Navigation />}>
-        <Route index element={<Index playlists = {playlists} setPlaylists = {setPlaylists} />} />
-        <Route path="new" element={<Annotation formData = {formData} setFormData = {setFormData} playlists = {playlists} />} />
-        <Route path="edit/:id" element={<EditAnnotation playlists = {playlists} setPlaylists = {setPlaylists} />} />
+        <Route index element={<Index playlists={playlists} setPlaylists={setPlaylists}/>}  /> 
+        <Route path="new" element={<Annotation formData={formData} setFormData={setFormData} setPlaylists={setPlaylists}/>} />
+        <Route path="edit/:id" element={<EditAnnotation />} />
+
       </Route>
       <Route path="/" element={<Navigate to="/api/playlists" />} />
     </Routes>
