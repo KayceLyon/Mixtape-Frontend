@@ -36,7 +36,12 @@ const Navigation = (params) => {
                 <Nav className="justify-content-end flex-grow-1 pe-3">
              <Nav.Link as={Link} to={"/api/playlists/new"} >Add Playlist</Nav.Link>
                 </Nav>
-               {/* <Search /> */}
+               <Search playlists = {params.playlists} 
+            setPlaylists = {params.setPlaylists} 
+            searchParams = {params.searchParams} 
+            setSearchParams = {params.setSearchParams} 
+            filteredPlaylists = {params.filteredPlaylists} 
+            setFilteredPlaylists = {params.setFilteredPlaylists}/>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
           </Container>
