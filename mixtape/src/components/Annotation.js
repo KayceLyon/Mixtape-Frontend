@@ -15,14 +15,14 @@ const Annotation = (params) => {
   
   const handleNewPlaylist = () => {
     axios.post(
-      'https://secret-beach-46849.herokuapp.com/admin/playlists_api/playlist/',
+      'https://secret-beach-46849.herokuapp.com/api/playlist/',
       {
         title: params.formData.title,
         author: params.formData.author,
         summary: params.formData.summary,
       }).then(()=>{
         axios
-        .get('https://secret-beach-46849.herokuapp.com/admin/playlists_api/playlist/')
+        .get('https://secret-beach-46849.herokuapp.com/api/playlist/')
         .then((response)=>{
           params.setPlaylists(response.data)
         })

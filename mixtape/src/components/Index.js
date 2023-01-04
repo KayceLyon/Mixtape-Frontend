@@ -9,7 +9,7 @@ import Playlists from './Playlists'
 
 const Index = (params) => {
   const axiosRequest = [ 
-    'https://secret-beach-46849.herokuapp.com/admin/playlists_api/playlist/'
+    'https://secret-beach-46849.herokuapp.com/api/playlists'
 ]
  
  const getPlaylists = () => { 
@@ -31,16 +31,15 @@ const Index = (params) => {
         <main id="Index">
           <h1>Playlists</h1>
             <Row xs={1} md={2} lg={3} className="g-4">
-                {/* {params.playlists.map((playlist)=>{  */}
-                    {/* return( */}
-                        <Col key={params.playlists._id}>
+                {params.playlists.map((playlist)=>{ 
+                    return(
+                        <Col key={playlist._id}>
                              <Playlists 
-                            title ={params.playlists.title} 
-                            author={params.playlists.author} 
-                            summary={params.playlists.summary} 
+                            title ={playlist.title} 
+                            author={playlist.author} 
+                            summary={playlist.summary} 
                             />       
-                            </Col>                  
-                          {/* </Col>  )})}  */}
+                          </Col>  )})} 
             </Row>
         </main>         
     </Container>
