@@ -5,24 +5,30 @@ import Button from 'react-bootstrap/Button'
 
 const Annotation = (params) => {
 
-    const handleChange = (event)=> {
-        const {name, value, type, checked} = event.target
-        params.setFormData(prevFormData => ({
-            ...prevFormData,
-            [name]: type === "checkbox" ? checked: value
-        })) 
+    const handleTitleChange = (event)=> {
+      console.log((event.target.value));
+        params.setFormData({...params.formData, [event.target.name]: event.target.value}) 
     }
+
+    const handleAuthorChange = (event)=> {
+      console.log(event.target.value);
+      params.setFormData({...params.formData, [event.target.name]: event.target.value}) 
+  }
+  const handleSummaryChange = (event)=> {
+    params.setFormData({...params.formData, [event.target.name]: event.target.value}) 
+}
   
-  const handleNewPlaylist = () => {
+  const handleNewPlaylist = (event) => {
+    event.preventDefault()
     axios.post(
-      'https://secret-beach-46849.herokuapp.com/admin/playlists_api/playlist/',
+      'https://secret-beach-46849.herokuapp.com/api/playlists',
       {
         title: params.formData.title,
         author: params.formData.author,
-        summary: params.formData.summary,
+        summary: params.formData.summary
       }).then(()=>{
         axios
-        .get('https://secret-beach-46849.herokuapp.com/admin/playlists_api/playlist/')
+        .get('https://secret-beach-46849.herokuapp.com/api/playlists')
         .then((response)=>{
           params.setPlaylists(response.data)
         })
@@ -34,9 +40,9 @@ const Annotation = (params) => {
       <Container className='container'fluid>
         <form>
       <h1 >Notes</h1>
-          <input className="form-control origin" type='text' name='title' onChange={handleChange} placeholder="Title" value={params.formData.title}/><br/>
-          <input className="form-control origin" type='text' name='author' onChange={handleChange} placeholder="Author" value={params.formData.author}/><br/>
-          <input className="form-control origin" type='text' name='summary' onChange={handleChange} placeholder="Summary" value={params.formData.summary}/><br/>
+          <input className="form-control origin" type='text' name='title' onChange={handleTitleChange} placeholder="Title" /><br/>
+          <input className="form-control origin" type='text' name='author' onChange={handleAuthorChange} placeholder="Author" /><br/>
+          <input className="form-control origin" type='text' name='summary' onChange={handleSummaryChange} placeholder="Summary" /><br/>
           <Button variant='light' type='submit' onClick={handleNewPlaylist}>Add Notes</Button>
           </form>
       </Container>
