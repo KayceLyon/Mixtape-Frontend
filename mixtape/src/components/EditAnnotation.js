@@ -22,7 +22,7 @@ const EditAnnotation = (params) => {
         summary: params.formData.summary,
       }).then(()=>{
         axios
-        .get('https://secret-beach-46849.herokuapp.com/api/playlists/')
+        .get('https://secret-beach-46849.herokuapp.com/api/playlists')
         .then((response)=>{
           params.setPlaylists(response.data)
         })

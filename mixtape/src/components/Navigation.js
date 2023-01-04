@@ -34,9 +34,7 @@ const Navigation = (params) => {
                 <Nav.Link><Logout /></Nav.Link> */}
                 </Nav>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-             <Nav.Link>Add Songs</Nav.Link>
-            <Nav.Link>
-                Edit Playlists</Nav.Link>
+             <Nav.Link as={Link} to={"/api/playlists/new"} >Add Playlist</Nav.Link>
                 </Nav>
                {/* <Search /> */}
               </Offcanvas.Body>
