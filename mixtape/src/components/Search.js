@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 
 const Search = (params) => {
 
-    let query = params.searchParams.get("query").split(' ').join('-').toLowerCase()
+    // let query = params.searchParams.get("query").split(' ').join('-').toLowerCase()
 
     const filteredPlaylists = (unfilteredPlaylists, query) => {
         return (unfilteredPlaylists.filter(playlists => playlists.title.toLowerCase().includes(query.toLowerCase()))).map(filteredPlaylists => (filteredPlaylists))
