@@ -45,7 +45,6 @@ const Navigation = (params) => {
         </Navbar>
       ))}
       <Outlet />
->>>>>>> 8e991eb5eab17328d4127769bcb9cb5ca459a81e
        </>
   );
 }
