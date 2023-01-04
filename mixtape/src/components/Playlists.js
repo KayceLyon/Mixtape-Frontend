@@ -6,7 +6,8 @@ const Playlists = (params) => {
     return (
         <>
             <Cards 
-            key={params._id} 
+            key={params._id}
+            playlist={params.playlist} 
             title={params.title} 
             author={params.author} 
             summary={params.summary} 
