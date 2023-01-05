@@ -8,10 +8,6 @@ import '../App.css'
 import Playlists from './Playlists'
 
 const Index = (params) => {
-  const axiosRequest = [ 
-    'https://secret-beach-46849.herokuapp.com/api/playlists'
-]
- 
 
 
   return (
