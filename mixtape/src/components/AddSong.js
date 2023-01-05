@@ -14,30 +14,11 @@ const AddSong = (params) => {
     const handleNewSong = (event) => {
       event.preventDefault()
       event.target.reset()
+
+      ///axios requests in here... need to pass in playlist id thru params, then use that as song.playlist.id
     }
 
-//   const handleNewPlaylist = (event) => {
-//     event.preventDefault()
-//     event.target.reset()
-//     axios.post(
-//       'https://secret-beach-46849.herokuapp.com/api/playlists',
-//       {
-//         title: params.formData.title,
-//         author: params.formData.author,
-//         summary: params.formData.summary
-//       })
 
-
-//       .then(()=>{
-//         axios
-//         .get('https://secret-beach-46849.herokuapp.com/api/playlists')
-//         .then(
-//           (response) => params.setPlaylists(response.data),
-//           (err) => console.log(err),
-//         )
-//         .catch((error) => console.log(error))
-//       })
-// }
 
 
 
