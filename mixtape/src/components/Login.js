@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import axios from 'axios'
 import { Button, Form } from 'react-bootstrap' 
 
 
@@ -15,8 +16,23 @@ function Login(props) {
       username: username,
       password: password
     }
-    props.handleLogin(userObj)
+    handleLogin(userObj)
   }
+
+  const handleLogin = (userObj) => {
+    console.log(userObj);
+  axios.post('http://localhost:8000/api/useraccount', userObj).then((response) => {
+    if(response.data.username){
+      console.log(response);
+      props.setCurrentUser(response.data)
+      props.handleToggleLogout()
+    } else {
+      console.log('error');
+     
+    }
+  })
+}
+
 
 
   return (
