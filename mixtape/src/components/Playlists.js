@@ -11,6 +11,8 @@ const Playlists = (params) => {
             title={params.title} 
             author={params.author} 
             summary={params.summary} 
+            id={params.id}
+            getPlaylists={params.getPlaylists}
             />
         </>
     )

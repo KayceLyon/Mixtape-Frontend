@@ -17,6 +17,7 @@ const Index = (params) => {
         .get(axiosRequest)
         .then(
             (response) => params.setPlaylists(response.data),
+            (response) => console.log(response.data),
             (err) => console.error(err)
             )
         .catch((error) => console.error(error))
@@ -33,12 +34,14 @@ const Index = (params) => {
             <Row xs={1} md={2} lg={3} className="g-4">
                  {params.filteredPlaylists.map((playlist)=>{ 
                    return(
-                        <Col key={playlist._id}>
+                        <Col key={playlist.id}>
                              <Playlists 
                             playlist={params.filteredPlaylists} 
                             title ={playlist.title} 
                             author={playlist.author} 
-                            summary={playlist.summary} 
+                            summary={playlist.summary}
+                            id={playlist.id} 
+                            getPlaylists={getPlaylists}
                             />       
                             </Col>                  
                            

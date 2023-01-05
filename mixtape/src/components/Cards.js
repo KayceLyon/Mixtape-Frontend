@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Card'
+import axios from 'axios'
 
 const Cards = (params) => {
 
@@ -31,6 +32,20 @@ const Cards = (params) => {
         console.log(cardFlip)
       }
 
+     
+ 
+
+    const handleDelete = () => {
+        console.log(params);
+        console.log(params.id);
+        console.log(params.title);
+        axios
+            .delete(`https://secret-beach-46849.herokuapp.com/api/playlists/${params.id}`)
+            .then(()=>{
+                params.getPlaylists()
+            })
+          
+    }
 
     return (
 
@@ -92,6 +107,8 @@ const Cards = (params) => {
             }
 
             <Button type='button' variant='success' className='summary-btn2'  onClick={handleSwitchBack}> Hide Playlist </Button>
+            <Button type='button' variant='success' className='summary-btn2' value={params._id} onClick={handleDelete}> Delete Playlist </Button>
+
 
         </div> 
 
