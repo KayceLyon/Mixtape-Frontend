@@ -6,6 +6,7 @@ const Cards = (params) => {
 
 
     const [switchState, setSwitchState] = useState(true);
+    const [cardFlip, setCardFlip] = useState(true)
 
     const handleSwitch = (event) => {
         event.preventDefault();
@@ -17,6 +18,16 @@ const Cards = (params) => {
         event.preventDefault();
         setSwitchState(true)
         console.log(switchState)
+      }
+
+    const toggleCardFlip = (event) => {
+        event.preventDefault();
+        if(cardFlip === true) {
+        setCardFlip(false)
+        } else {
+        setCardFlip(true)
+        }
+        console.log(cardFlip)
       }
 
 
@@ -48,15 +59,15 @@ const Cards = (params) => {
 
         <div className='summary'>
 
+
+            <Button type='button' className='cardFlip-btn' onClick={toggleCardFlip}>
             <Card className='summaryCard'>
                 <Card.Text className="insertText">
                  Summary: {params.summary} 
 
-                </Card.Text>
-           
-        
-        
+                </Card.Text>       
             </Card>
+            </Button>
 
         <Button type='button' variant='success' className='summary-btn2'  onClick={handleSwitchBack}> Hide Playlist </Button>
 
