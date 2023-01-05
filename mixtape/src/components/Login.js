@@ -7,13 +7,13 @@ import { Button, Form } from 'react-bootstrap'
 
 function Login(props) {
 
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const triggerLogin = (event) => {
     event.preventDefault()
     let userObj = {
-      username: username,
+      email: email,
       password: password
     }
     handleLogin(userObj)
@@ -22,7 +22,7 @@ function Login(props) {
   const handleLogin = (userObj) => {
     console.log(userObj);
   axios.post('http://localhost:8000/api/useraccount', userObj).then((response) => {
-    if(response.data.username){
+    if(response.data.email){
       console.log(response);
       props.setCurrentUser(response.data)
       props.handleToggleLogout()
@@ -42,9 +42,9 @@ function Login(props) {
     <Form class="submit" onSubmit={triggerLogin} className='inputForm'>
     <Form.Group className="mb-3" controlId="formBasic">
       <Form.Label class='log'>Login</Form.Label>
-      <Form.Control type="text" placeholder="Username" className="textInput" onChange={(event)=>{setUsername(event.target.value)}}/>
+      <Form.Control type="text" placeholder="Email" className="textInput" onChange={(event)=>{setEmail(event.target.value)}}/>
       <Form.Text className="text-muted">
-        We'll never share your email with anyone else.
+        We'll never share your username with anyone else.
       </Form.Text>
     </Form.Group>
 
