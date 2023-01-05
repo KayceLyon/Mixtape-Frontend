@@ -2,19 +2,20 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button'
+import {useNavigate} from 'react-router-dom'
 
 const Annotation = (params) => {
-  let [showSongForm, setShowSongForm] = useState(false)
-  let [songNumber, setSongNumber] = useState(0)
-  let [song, setSong] = useState([{
-    "title":"",
-    "artist":"",
-    "cover":"",
-    "album": "",
-    "playlist": {
-      "id": "" ///find correct id thru params.formdata.id
-    }
-}])
+//   let [showSongForm, setShowSongForm] = useState(false)
+//   let [songNumber, setSongNumber] = useState(0)
+//   let [song, setSong] = useState([{
+//     "title":"",
+//     "artist":"",
+//     "cover":"",
+//     "album": "",
+//     "playlist": {
+//       "id": "" ///find correct id thru params.formdata.id
+//     }
+// }])
 
     const handleTitleChange = (event)=> {
       console.log((event.target.value));
@@ -29,11 +30,17 @@ const Annotation = (params) => {
       params.setFormData({...params.formData, [event.target.name]: event.target.value}) 
     }
 
-    const handleSongChange = (event) => {
-      setSong({...song, [event.target.name]: event.target.value})
-    }
+    // const handleSongChange = (event) => {
+    //   setSong({...song, [event.target.name]: event.target.value})
+    // }
+
+    // const handleNewSong = (event) => {
+    //   event.preventDefault()
+    //   event.target.reset()
+    // }
 
 
+    const navigate = useNavigate()
 
   const handleNewPlaylist = (event) => {
     event.preventDefault()
@@ -58,46 +65,51 @@ const Annotation = (params) => {
       })
 }
 
+  const submitAll = (event) => {
+    handleNewPlaylist(event)
+    navigate('/api/playlists')
+  }
 
 
 
     return (
       <Container className='container'fluid>
-        {showSongForm === false ?
-        <form onSubmit={handleNewPlaylist}>
+        {/* {showSongForm === false ? */}
+        <form onSubmit={submitAll} >
           <h1 >Notes</h1>
           <input className="form-control origin" type='text' name='title' onChange={handleTitleChange} placeholder="Title" /><br/>
           <input className="form-control origin" type='text' name='author' onChange={handleAuthorChange} placeholder="Author" /><br/>
           <input className="form-control origin" type='text' name='summary' onChange={handleSummaryChange} placeholder="Summary" /><br/>
           
-          <Button variant='light' type='submit' onClick={()=>setShowSongForm(true)} >Add Notes</Button>
+          <Button variant='light' type='submit' >
+          Add Notes</Button>
         </form>
-        :
-         <form>
-          <h1>{params.formData.title} </h1>
-            <small>by {params.formData.author}</small><br/>
-          {songNumber === 0 ? 
-            <>
+        {/* // :
+        //  <form>
+        //   <h1>{params.formData.title} </h1>
+        //     <small>by {params.formData.author}</small><br/>
+        //   {songNumber === 0 ?  */}
+        {/* //     <>
             
-            is empty! Add your first Song!<br/>
-            Remember... the vibe is : {params.formData.summary} <br/><br/>
-            </>
-          :
-            null
-          }
-          <label>Song {songNumber + 1}</label> <br/>
-          <label> Song title</label>
-          <input className="form-control origin" type='text' name="title" onChange={handleSongChange} placeholder="title"/>
-          <label> Song artist</label>
-          <input className="form-control origin" type='text' name="artist" onChange={handleSongChange} placeholder="artist"/>
-          <label> Song cover</label><br/>
-          <small>(paste image address here)</small>
-          <input className="form-control origin" type='text' name="cover" onChange={handleSongChange} placeholder="cover"/>
-          <label> Song album</label>
-          <input className="form-control origin" type='text' name="album" onChange={handleSongChange} placeholder="album"/>
-
-          </form>
-        }
+        //     is empty! Add your first Song!<br/>
+        //     Remember... the vibe is : {params.formData.summary} <br/><br/>
+        //     </>
+        //   :
+        //     null
+        //   }
+        //   <label>Song {songNumber + 1}</label> <br/>
+        //   <label> Song title</label>
+        //   <input className="form-control origin" type='text' name="title" onChange={handleSongChange} placeholder="title"/>
+        //   <label> Song artist</label>
+        //   <input className="form-control origin" type='text' name="artist" onChange={handleSongChange} placeholder="artist"/>
+        //   <label> Song cover</label><br/>
+        //   <small>(paste image address here)</small>
+        //   <input className="form-control origin" type='text' name="cover" onChange={handleSongChange} placeholder="cover"/>
+        //   <label> Song album</label>
+        //   <input className="form-control origin" type='text' name="album" onChange={handleSongChange} placeholder="album"/>
+        //   <Button variant='light' type='submit' >Add Song</Button>
+        //   </form>
+        // } */}
       
       </Container>
     )

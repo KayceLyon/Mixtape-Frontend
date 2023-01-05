@@ -5,10 +5,19 @@ import Navigation from './components/Navigation'
 import Index from './components/Index'
 import Annotation from './components/Annotation'
 import EditAnnotation from './components/EditAnnotation'
+import AddSong from './components/AddSong'
 
 const App = () => {
 
-  
+    let [song, setSong] = useState([{
+    "title":"",
+    "artist":"",
+    "cover":"",
+    "album": "",
+    "playlist": {
+      "id": "" ///find correct id thru params.formdata.id
+    }
+}])
   
 
   let [playlists, setPlaylists] = useState([])
@@ -28,7 +37,13 @@ return (
       <Route path = "/api/playlists" element={<Navigation searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists}/>}>
         <Route index element={<Index searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists}/>}  /> 
         <Route path="new" element={<Annotation formData={formData} setFormData={setFormData} setPlaylists={setPlaylists}/>} />
+        
+        
+        <Route  element={<Navigate to="/api/playlists/newSong/:id" song={song} setSong={setSong}/>}/>
+
+
         <Route path="edit/:id" element={<EditAnnotation />} />
+       
 
       </Route>
       <Route path="/" element={<Navigate to="/api/playlists" />} />
