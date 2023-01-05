@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import {useNavigate} from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Card'
 import axios from 'axios'
 
 const Cards = (params) => {
 
-
+    const navigate = useNavigate()
     const [switchState, setSwitchState] = useState(true);
     const [cardFlip, setCardFlip] = useState(true)
 
@@ -44,7 +45,8 @@ const Cards = (params) => {
             .then(()=>{
                 params.getPlaylists()
             })
-          
+        //   navigate('/api/playlists')
+
     }
 
     return (
@@ -107,7 +109,7 @@ const Cards = (params) => {
             }
 
             <Button type='button' variant='success' className='summary-btn2'  onClick={handleSwitchBack}> Hide Playlist </Button>
-            <Button type='button' variant='success' className='summary-btn2' value={params._id} onClick={handleDelete}> Delete Playlist </Button>
+            <Button type='button' variant='success' className='summary-btn2' onClick={handleDelete}> Delete Playlist </Button>
 
 
         </div> 

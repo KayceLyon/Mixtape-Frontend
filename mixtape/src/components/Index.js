@@ -12,27 +12,14 @@ const Index = (params) => {
     'https://secret-beach-46849.herokuapp.com/api/playlists'
 ]
  
- const getPlaylists = () => { 
-    axios
-        .get(axiosRequest)
-        .then(
-            (response) => params.setPlaylists(response.data),
-            (response) => console.log(response.data),
-            (err) => console.error(err)
-            )
-        .catch((error) => console.error(error))
- }
 
-  useEffect(()=>{
-  getPlaylists()
-  }, []);
 
   return (
     <Container className='container' fluid>
         <main id="Index">
           <h1>Playlists</h1>
             <Row xs={1} md={2} lg={3} className="g-4">
-                 {params.filteredPlaylists.map((playlist)=>{ 
+                 {params.playlists.map((playlist)=>{ 
                    return(
                         <Col key={playlist.id}>
                              <Playlists 
@@ -41,7 +28,9 @@ const Index = (params) => {
                             author={playlist.author} 
                             summary={playlist.summary}
                             id={playlist.id} 
-                            getPlaylists={getPlaylists}
+                            getPlaylists={params.getPlaylists}
+                            setPlaylists={params.setPlaylists}
+                            
                             />       
                             </Col>                  
                            

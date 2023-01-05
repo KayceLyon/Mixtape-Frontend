@@ -13,6 +13,7 @@ const Playlists = (params) => {
             summary={params.summary} 
             id={params.id}
             getPlaylists={params.getPlaylists}
+            setPlaylists={params.setPlaylists}
             />
         </>
     )

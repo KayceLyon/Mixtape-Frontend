@@ -21,7 +21,8 @@ const handleChange = (event)=> {
         title: params.formData.title,
         author: params.formData.author,
         summary: params.formData.summary
-      }).then(()=>{
+      }).then((response)=>{
+        console.log(response);
         axios
         .get('https://secret-beach-46849.herokuapp.com/api/playlists')
         .then((response)=>{
