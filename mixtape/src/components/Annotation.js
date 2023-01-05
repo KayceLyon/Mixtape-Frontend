@@ -1,9 +1,19 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button'
 
 const Annotation = (params) => {
+
+  const [song, setSong] = useState([{
+    "title":"",
+    "artist":"",
+    "cover":"",
+    "album": "",
+    "playlist": {
+      "id": ""
+    }
+}])
 
     const handleTitleChange = (event)=> {
       console.log((event.target.value));
@@ -18,6 +28,10 @@ const Annotation = (params) => {
       params.setFormData({...params.formData, [event.target.name]: event.target.value}) 
     }
 
+    const handleSongChange = (event) => {
+      setSong({...song, [event.target.name]: event.target.value})
+    }
+
 
 
   const handleNewPlaylist = (event) => {
@@ -30,6 +44,8 @@ const Annotation = (params) => {
         author: params.formData.author,
         summary: params.formData.summary
       })
+
+
       .then(()=>{
         axios
         .get('https://secret-beach-46849.herokuapp.com/api/playlists')
@@ -51,7 +67,8 @@ const Annotation = (params) => {
           <input className="form-control origin" type='text' name='title' onChange={handleTitleChange} placeholder="Title" /><br/>
           <input className="form-control origin" type='text' name='author' onChange={handleAuthorChange} placeholder="Author" /><br/>
           <input className="form-control origin" type='text' name='summary' onChange={handleSummaryChange} placeholder="Summary" /><br/>
-          addsong? <br/>
+          
+          <input className="form-control origin" type='text' name="title" onChange={handleSongChange} placeholder="song title"/>
           <Button variant='light' type='submit' >Add Notes</Button>
           </form>
       </Container>
