@@ -2,8 +2,13 @@ import React from 'react'
 import axios from 'axios'
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button'
+import {useNavigate} from 'react-router-dom'
+
+
 
 const Annotation = (params) => {
+
+const navigate = useNavigate()
 
 const handleChange = (event)=> {
     const {name, value, type, checked} = event.target
@@ -21,13 +26,11 @@ const handleChange = (event)=> {
         title: params.formData.title,
         author: params.formData.author,
         summary: params.formData.summary
-      }).then(()=>{
-        axios
-        .get('https://secret-beach-46849.herokuapp.com/api/playlists')
-        .then((response)=>{
-          params.setPlaylists(response.data)
-        })
       })
+      .then(()=>{
+        params.getPlaylists()
+    })
+  navigate('/api/playlists')     
 }
     return (
       <Container className='container'fluid>
