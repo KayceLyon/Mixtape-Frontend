@@ -37,10 +37,9 @@ const SongIndex = (params) => {
                        return(
                             <Col key={song._id}>
                             <Songs 
-                        playlist={params.filteredSongs} 
                         title ={song.title} 
-                        artist={song.author} 
-                        covery={song.summary} 
+                        artist={song.artist} 
+                        cover={song.cover} 
                         album={song.album}
                         />       
                         </Col>                 
