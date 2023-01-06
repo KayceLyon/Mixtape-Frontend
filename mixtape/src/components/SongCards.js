@@ -2,10 +2,6 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 
-
-    
-
-
 function SongCards(params) {
   return (
     <Card style={{ width: '18rem' }}>
@@ -14,9 +10,19 @@ function SongCards(params) {
         <Card.Title>{params.title}</Card.Title>
         <Card.Text>{params.artist}</Card.Text>
         <Card.Text>{params.album}</Card.Text>
-        <Button variant="primary"></Button>
+        <Form>
+            {['checkbox'].map((type) => (
+                <div key={`Add Song`} className="mb-3">
+                <Form.Check 
+                    type={type}
+                    id={`Add Song`}
+                    label={`Add Song`}
+                />     
+                </div>
+            ))}
+        </Form>
         <Form.Select aria-label="Default select example">
-            <option>Open this select menu</option>
+            <option>Playlist</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
