@@ -6,6 +6,7 @@ import Navigation from './components/Navigation'
 import Index from './components/Index'
 import Annotation from './components/Annotation'
 import EditAnnotation from './components/EditAnnotation'
+import Login from './components/Login'
 import AddSong from './components/AddSong'
 import SongIndex from './components/SongIndex'
 
@@ -49,12 +50,22 @@ const App = () => {
  }
 
  
+  const [currentUser, setCurrentUser] = useState(false)
+
 
 return (
   <>
 
   <Routes>
-      <Route path = "/api/playlists" element={<Navigation getPlaylists={getPlaylists} searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists}/>}>
+    
+    <Route path = 'api/playlists' element={<Login setCurrentUser={setCurrentUser} />} >
+    </Route>
+
+    { currentUser === true ?  
+  
+ <>
+
+<Route path = "/api/playlists" element={<Navigation getPlaylists={getPlaylists} searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists} setCurrentUser={setCurrentUser}/>}>
         <Route index element={<Index searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists} getPlaylists={getPlaylists}/>}  /> 
         <Route path="new" element={<Annotation formData={formData} setFormData={setFormData} setPlaylists={setPlaylists} getPlaylists={getPlaylists}/>} />
         <Route path="edit/:id" element={<EditAnnotation playlists={playlists} getPlaylists={getPlaylists}/>} />
@@ -66,9 +77,22 @@ return (
         <Route index element={<SongIndex songs = {songs} setSongs = {setSongs} filteredSongs = {filteredSongs} setFilteredSongs = {setFilteredSongs} />} />
         <Route path="new" element={<AddSong formData = {formData} setFormData = {setFormData} />} />
     </Route>
-    </Routes>
+    
   </>
+:
+null
+}
+
+</Routes>
+
+</>
+
 )
+
+    
+  
+
+
 }
 
 export default App;
