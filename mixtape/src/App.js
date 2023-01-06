@@ -6,6 +6,9 @@ import Navigation from './components/Navigation'
 import Index from './components/Index'
 import Annotation from './components/Annotation'
 import EditAnnotation from './components/EditAnnotation'
+import Login from './components/Login'
+import AddSong from './components/AddSong'
+import SongIndex from './components/SongIndex'
 
 const App = () => {
 
@@ -47,7 +50,6 @@ const App = () => {
  }
 
  
-
   const [currentUser, setCurrentUser] = useState(false)
 
 
@@ -55,15 +57,36 @@ return (
   <>
 
   <Routes>
-      <Route path = "/api/playlists" element={<Navigation searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists}/>}>
-        <Route index element={<Index searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists}/>}  /> 
-        <Route path="new" element={<Annotation formData={formData} setFormData={setFormData} setPlaylists={setPlaylists}/>} />
-        <Route path="edit/:id" element={<EditAnnotation />} />
+    
+    <Route path = 'api/playlists' element={<Login setCurrentUser={setCurrentUser} />} >
+    </Route>
+
+    { currentUser === true ?  
+  
+ <>
+
+<Route path = "/api/playlists" element={<Navigation getPlaylists={getPlaylists} searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists} setCurrentUser={setCurrentUser}/>}>
+        <Route index element={<Index searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists} getPlaylists={getPlaylists}/>}  /> 
+        <Route path="new" element={<Annotation formData={formData} setFormData={setFormData} setPlaylists={setPlaylists} getPlaylists={getPlaylists}/>} />
+        <Route path="edit/:id" element={<EditAnnotation playlists={playlists} getPlaylists={getPlaylists}/>} />
 
       </Route>
-      <Route path="/" element={<Navigate to="/api/playlists" />} />
-    </Routes>
+      <Route path="/" element={<Navigate to="/api/playlists" />}>
+      </Route>
+      <Route path = "/api/songs" element={<Navigation searchParams = {searchParams} setSearchParams = {setSearchParams} filteredSongs = {filteredSongs} setFilteredSongs = {setFilteredSongs} songs={songs} setSongs={setSongs}/>}>
+        <Route index element={<SongIndex songs = {songs} setSongs = {setSongs} filteredSongs = {filteredSongs} setFilteredSongs = {setFilteredSongs} />} />
+        <Route path="new" element={<AddSong />} />
+    </Route>
+    
   </>
+:
+null
+}
+
+</Routes>
+
+</>
+
 )
 
     
