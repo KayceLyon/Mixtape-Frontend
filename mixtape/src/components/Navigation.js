@@ -4,12 +4,21 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-
+import { Button } from 'react-bootstrap' 
 
 
 import Search from './Search'
 
 const Navigation = (params) => {
+
+
+const handleLogout = (event) => {
+  event.preventDefault()
+  params.setCurrentUser(false)
+}
+
+
+
     return (
       <>
       {['sm'].map((expand) => (
@@ -29,8 +38,7 @@ const Navigation = (params) => {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-start flex-grow-1 pe 3">
-                {/* <Nav.Link><Login /></Nav.Link>
-                <Nav.Link><Logout /></Nav.Link> */}
+                <Nav.Link><Button onClick={handleLogout}>Logout</Button></Nav.Link>
                 </Nav>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
              <Nav.Link as={Link} to={"/api/playlists/new"} >Add Playlist</Nav.Link>

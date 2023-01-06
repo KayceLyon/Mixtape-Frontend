@@ -21,29 +21,20 @@ const App = () => {
   const [filteredPlaylists, setFilteredPlaylists] = useState([])
 
   const [currentUser, setCurrentUser] = useState(false)
-  const [toggleLogout, setToggleLogout] = useState(false)
 
-  const handleToggleLogout = () => {
-    if(toggleLogout === true) {
-      setToggleLogout(false)
-      console.log(currentUser)
-    } else {
-      setToggleLogout(true)
-    }
-  }
 
 return (
   <>
   <Routes>
     
-    <Route path = 'api/playlists' element={<Login handleToggleLogout={handleToggleLogout} setCurrentUser={setCurrentUser} />} >
+    <Route path = 'api/playlists' element={<Login setCurrentUser={setCurrentUser} />} >
     </Route>
 
     { currentUser === true ?  
   
  <>
 
-    <Route path = "/api/playlists" element={<Navigation searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists}/>}>
+    <Route path = "/api/playlists" element={<Navigation searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists} setCurrentUser={setCurrentUser}/>}>
       <Route index element={<Index searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists}/>}  /> 
       <Route path="new" element={<Annotation formData={formData} setFormData={setFormData} setPlaylists={setPlaylists}/>} />
       <Route path="edit/:id" element={<EditAnnotation />} />

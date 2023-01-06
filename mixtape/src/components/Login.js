@@ -26,7 +26,6 @@ function Login(props) {
     if(response){
         console.log('works');
       props.setCurrentUser(true)
-      props.handleToggleLogout()
     } else {
       console.log('error');
      
