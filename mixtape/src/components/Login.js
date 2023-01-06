@@ -7,13 +7,13 @@ import { Button, Form } from 'react-bootstrap'
 
 function Login(props) {
 
-  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
   const triggerLogin = (event) => {
     event.preventDefault()
     let userObj = {
-      email: email,
+      username: username,
       password: password
     }
     handleLogin(userObj)
@@ -21,10 +21,11 @@ function Login(props) {
 
   const handleLogin = (userObj) => {
     console.log(userObj);
-  axios.post('http://localhost:8000/api/useraccount', userObj).then((response) => {
-    if(response.data.email){
-      console.log(response);
-      props.setCurrentUser(response.data)
+  axios.get('http://localhost:8000/api/useraccount/login').then((response) => {
+    
+    if(response){
+        console.log('works');
+      props.setCurrentUser(true)
       props.handleToggleLogout()
     } else {
       console.log('error');
@@ -39,12 +40,12 @@ function Login(props) {
     <>
      <div className="bg">
      <h1>Welcome to Mixtape</h1>
-    <Form class="submit" onSubmit={triggerLogin} className='inputForm'>
+    <Form className="submit" onSubmit={triggerLogin}>
     <Form.Group className="mb-3" controlId="formBasic">
-      <Form.Label class='log'>Login</Form.Label>
-      <Form.Control type="text" placeholder="Email" className="textInput" onChange={(event)=>{setEmail(event.target.value)}}/>
+      <Form.Label className='log'>Login</Form.Label>
+      <Form.Control type="text" placeholder="Username" className="textInput" onChange={(event)=>{setUsername(event.target.value)}}/>
       <Form.Text className="text-muted">
-        We'll never share your username with anyone else.
+        We'll never share your personal information with anyone else.
       </Form.Text>
     </Form.Group>
 

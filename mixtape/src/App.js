@@ -20,12 +20,13 @@ const App = () => {
   const [searchParams, setSearchParams] = useSearchParams({query: ""})
   const [filteredPlaylists, setFilteredPlaylists] = useState([])
 
-  const [currentUser, setCurrentUser] = useState({})
+  const [currentUser, setCurrentUser] = useState(false)
   const [toggleLogout, setToggleLogout] = useState(false)
 
   const handleToggleLogout = () => {
-    if(toggleLogout) {
+    if(toggleLogout === true) {
       setToggleLogout(false)
+      console.log(currentUser)
     } else {
       setToggleLogout(true)
     }
@@ -33,26 +34,37 @@ const App = () => {
 
 return (
   <>
-
-  <Login handleToggleLogout={handleToggleLogout} setCurrentUser={setCurrentUser} />
-
-  { currentUser.username ?  
-  
   <Routes>
-      <Route path = "/api/playlists" element={<Navigation searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists}/>}>
-        <Route index element={<Index searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists}/>}  /> 
-        <Route path="new" element={<Annotation formData={formData} setFormData={setFormData} setPlaylists={setPlaylists}/>} />
-        <Route path="edit/:id" element={<EditAnnotation />} />
+    
+    <Route path = 'api/playlists' element={<Login handleToggleLogout={handleToggleLogout} setCurrentUser={setCurrentUser} />} >
+    </Route>
 
-      </Route>
-      <Route path="/" element={<Navigate to="/api/playlists" />} />
-    </Routes>
+    { currentUser === true ?  
+  
+ <>
+
+    <Route path = "/api/playlists" element={<Navigation searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists}/>}>
+      <Route index element={<Index searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists}/>}  /> 
+      <Route path="new" element={<Annotation formData={formData} setFormData={setFormData} setPlaylists={setPlaylists}/>} />
+      <Route path="edit/:id" element={<EditAnnotation />} />
+
+    </Route>
+    <Route path="/" element={<Navigate to="/api/playlists" />} />
+    </>
 
 :
 null
 }
-  </>
+
+</Routes>
+
+</>
 )
+
+    
+  
+
+
 }
 
 export default App;
