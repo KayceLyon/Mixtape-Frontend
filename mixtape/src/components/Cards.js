@@ -1,25 +1,102 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Card from 'react-bootstrap/Card'
-
+import Button from 'react-bootstrap/Card'
 
 const Cards = (params) => {
+
+
+    const [switchState, setSwitchState] = useState(true);
+    const [cardFlip, setCardFlip] = useState(true)
+
+    const handleSwitch = (event) => {
+        event.preventDefault();
+        setSwitchState(false)
+        console.log(switchState)
+      }
+
+      const handleSwitchBack = (event) => {
+        event.preventDefault();
+        setSwitchState(true)
+        setCardFlip(true)
+        console.log(switchState)
+      }
+
+    const toggleCardFlip = (event) => {
+        event.preventDefault();
+        if(cardFlip === true) {
+        setCardFlip(false)
+        } else {
+        setCardFlip(true)
+        }
+        console.log(cardFlip)
+      }
+
+
     return (
+
+<>
+        { switchState === true ? 
+
         <div className='tape'>
-        <Card className="game-cards create-game-cards tape1" key={params._id}>                   
-         <Card.Title>{params.title}</Card.Title>
-         </Card>
-         <Card className="tape2" key={params._id}> 
+            <Card className="game-cards create-game-cards tape1" key={params._id}>                   
+                <Card.Title>{params.title}</Card.Title>
+            </Card>
+                <Card className="tape2" key={params._id}> 
                   <Card.Text className="tapeText">
                    Author: {params.author}<br/> 
                   
                   </Card.Text>  
-         </Card>  
+            </Card>  
 
-          <div className="summary">
-           Summary: {params.summary} 
-          </div>
+
+            <Button type='button' variant='success' className='summary-btn'  onClick={handleSwitch}> Show Playlist </Button>
+
+          
 
         </div>
+
+        :
+
+
+        <div className='summary'>
+
+            { cardFlip === true ?
+
+            <div>
+
+            <Button type='button' className='cardFlip-btn' onClick={toggleCardFlip}>
+            <Card className='summaryCard'>
+                <Card.Text className="insertText">
+                 Summary: {params.summary} 
+
+                </Card.Text>       
+            </Card>
+            </Button>
+
+            </div>
+
+            :
+
+            <div>
+
+            <Button type='button' className='cardFlip-btn' onClick={toggleCardFlip}>
+            <Card className='summaryCard2'>
+                <Card.Text className="insertText">
+                 {params.title}
+
+                </Card.Text>       
+            </Card>
+            </Button>
+
+            </div>
+            }
+
+            <Button type='button' variant='success' className='summary-btn2'  onClick={handleSwitchBack}> Hide Playlist </Button>
+
+        </div> 
+
+        }
+</>
     )
 }
 export default Cards;

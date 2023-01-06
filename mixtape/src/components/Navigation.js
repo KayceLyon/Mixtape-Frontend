@@ -36,19 +36,25 @@ const Navigation = (params) => {
                 </Nav>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
              <Nav.Link as={Link} to={"/api/playlists/new"} >Add Playlist</Nav.Link>
+             <Nav.Link as={Link} to={"/api/songs/new"} >Add Songs</Nav.Link>
                 </Nav>
                <Search playlists = {params.playlists} 
             setPlaylists = {params.setPlaylists} 
             searchParams = {params.searchParams} 
             setSearchParams = {params.setSearchParams} 
             filteredPlaylists = {params.filteredPlaylists} 
-            setFilteredPlaylists = {params.setFilteredPlaylists}/>
+            setFilteredPlaylists = {params.setFilteredPlaylists}
+            songs = {params.songs}
+            setSongs = {params.setSongs}
+            filteredSongs = {params.filteredSongs}
+            setFilteredSongs = {params.setFilteredSongs}/>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
           </Container>
         </Navbar>
       ))}
       <Outlet />
+
        </>
   );
 }
