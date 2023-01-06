@@ -21,7 +21,7 @@ function Login(props) {
 
   const handleLogin = (userObj) => {
     console.log(userObj);
-  axios.get('http://localhost:8000/api/useraccount/login').then((response) => {
+  axios.get('https://secret-beach-46849.herokuapp.com/api/useraccount/login').then((response) => {
     
     if(response){
         console.log('works');
