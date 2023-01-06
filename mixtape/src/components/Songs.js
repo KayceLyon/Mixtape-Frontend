@@ -1,16 +1,15 @@
 import React from 'react'
-import Cards from './Cards'
+import SongCards from './SongCards'
 
 const Songs = (params) => {
  
     return (
         <>
-        
-            <Cards 
+            <SongCards 
             key={params._id} 
             title={params.title} 
             artist={params.artist} 
-            cover={params.cover} 
+            cover={params.cover}
             album={params.album} 
             />
         </>
