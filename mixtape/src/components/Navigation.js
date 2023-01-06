@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Link, Outlet} from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Button } from 'react-bootstrap' 
 
@@ -12,14 +13,19 @@ import Search from './Search'
 const Navigation = (params) => {
 
 
+
 const handleLogout = (event) => {
   event.preventDefault()
   params.setCurrentUser(false)
 }
 
 
+useEffect(()=>{
+  params.getPlaylists()
+  }, []);
+  
+return (
 
-    return (
       <>
       {['sm'].map((expand) => (
         <Navbar key={expand} expand={expand} className="mb-3">
@@ -42,19 +48,25 @@ const handleLogout = (event) => {
                 </Nav>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
              <Nav.Link as={Link} to={"/api/playlists/new"} >Add Playlist</Nav.Link>
+             <Nav.Link as={Link} to={"/api/songs/new"} >Add Songs</Nav.Link>
                 </Nav>
                <Search playlists = {params.playlists} 
             setPlaylists = {params.setPlaylists} 
             searchParams = {params.searchParams} 
             setSearchParams = {params.setSearchParams} 
             filteredPlaylists = {params.filteredPlaylists} 
-            setFilteredPlaylists = {params.setFilteredPlaylists}/>
+            setFilteredPlaylists = {params.setFilteredPlaylists}
+            songs = {params.songs}
+            setSongs = {params.setSongs}
+            filteredSongs = {params.filteredSongs}
+            setFilteredSongs = {params.setFilteredSongs}/>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
           </Container>
         </Navbar>
       ))}
       <Outlet />
+
        </>
   );
 }

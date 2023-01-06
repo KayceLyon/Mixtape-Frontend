@@ -8,20 +8,20 @@ import '../App.css'
 import Playlists from './Playlists'
 
 const Index = (params) => {
+
   const axiosRequest = [ 
     'https://secret-beach-46849.herokuapp.com/api/playlists'
 ]
- 
- const getPlaylists = () => { 
-    axios
-        .get(axiosRequest)
-        .then(
-            (response) => params.setPlaylists(response.data),
-            (err) => console.error(err)
-            )
-        .catch((error) => console.error(error))
- }
 
+const getPlaylists = () => { 
+    Promise.all(axiosRequest.map((axiosRequest)=> axios.get(axiosRequest))).then(
+    axios.spread((...allData) => {
+      params.setPlaylists(allData[0].data);
+      params.setFilteredPlaylists((allData[0].data));
+    })
+    )
+   }
+ 
   useEffect(()=>{
   getPlaylists()
   }, []);
@@ -33,11 +33,16 @@ const Index = (params) => {
             <Row xs={1} md={2} lg={3} className="g-4">
                  {params.playlists.map((playlist)=>{ 
                    return(
-                        <Col key={playlist._id}>
+                        <Col key={playlist.id}>
                              <Playlists 
+                            playlist={params.filteredPlaylists} 
                             title ={playlist.title} 
                             author={playlist.author} 
-                            summary={playlist.summary} 
+                            summary={playlist.summary}
+                            id={playlist.id} 
+                            getPlaylists={params.getPlaylists}
+                            setPlaylists={params.setPlaylists}
+                            
                             />       
                             </Col>                  
                            
