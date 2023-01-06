@@ -21,6 +21,8 @@ const App = () => {
   const [filteredPlaylists, setFilteredPlaylists] = useState([])
 
 
+ 
+
    const getPlaylists = () => { 
     axios
         .get('https://secret-beach-46849.herokuapp.com/api/playlists')
@@ -40,7 +42,7 @@ return (
       <Route path = "/api/playlists" element={<Navigation getPlaylists={getPlaylists} searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists}/>}>
         <Route index element={<Index searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists} getPlaylists={getPlaylists}/>}  /> 
         <Route path="new" element={<Annotation formData={formData} setFormData={setFormData} setPlaylists={setPlaylists} getPlaylists={getPlaylists}/>} />
-        <Route path="edit/:id" element={<EditAnnotation />} />
+        <Route path="edit/:id" element={<EditAnnotation playlists={playlists} getPlaylists={getPlaylists}/>} />
 
       </Route>
       <Route path="/" element={<Navigate to="/api/playlists" />} />
