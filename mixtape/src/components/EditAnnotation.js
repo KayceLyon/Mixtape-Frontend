@@ -32,13 +32,14 @@ const EditAnnotation = (params) => {
 
     return (
       <Container className='container'fluid>
-        <form>
+        {/* <form>
       <h1 >Notes</h1>
           <input className="form-control origin" type='text' name='title' onChange={handleChange} placeholder="Title" value={params.formData.title}/><br/>
           <input className="form-control origin" type='text' name='author' onChange={handleChange} placeholder="Author" value={params.formData.author}/><br/>
           <input className="form-control origin" type='text' name='summary' onChange={handleChange} placeholder="Summary" value={params.formData.summary}/><br/>
           <Button variant='light' type='submit' onClick={handleEditPlaylist}>Add Notes</Button>
-          </form>
+          </form> */}
+          hewwo
       </Container>
     )
 }

@@ -33,8 +33,9 @@ const Cards = (params) => {
         console.log(cardFlip)
       }
 
-     
- 
+    const handleEdit= () => {
+        navigate(`/api/playlists/edit/${params.id}`)
+    }
 
     const handleDelete = () => {
         console.log(params);
@@ -110,6 +111,7 @@ const Cards = (params) => {
 
             <Button type='button' variant='success' className='summary-btn2'  onClick={handleSwitchBack}> Hide Playlist </Button>
             <Button type='button' variant='success' className='summary-btn2' onClick={handleDelete}> Delete Playlist </Button>
+            <Button type='button' variant='success' className='summary-btn2' onClick={handleEdit}> Edit Playlist </Button>
 
 
         </div> 
