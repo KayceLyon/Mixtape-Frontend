@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Link, Outlet} from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -12,7 +12,11 @@ import Logout from './Logout'
 import Search from './Search'
 
 const Navigation = (params) => {
-    return (
+    
+  useEffect(()=>{
+    params.getPlaylists()
+    }, []);
+  return (
       <>
       {['sm'].map((expand) => (
         <Navbar key={expand} expand={expand} className="mb-3">

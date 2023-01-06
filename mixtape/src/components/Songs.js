@@ -5,7 +5,6 @@ const Songs = (params) => {
  
     return (
         <>
-        
             <SongCards 
             key={params._id} 
             title={params.title} 
