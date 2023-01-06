@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import {useParams} from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
 const EditAnnotation = (params) => {
 
-
+  const navigate = useNavigate()
   let [playlist, setPlaylist] = useState({})
   const parameters = useParams()
  
@@ -38,12 +38,10 @@ const EditAnnotation = (params) => {
         author: playlist.author,
         summary: playlist.summary,
       }).then(()=>{
-        axios
-        .get('https://secret-beach-46849.herokuapp.com/api/playlists')
-        .then((response)=>{
-          params.setPlaylists(response.data)
-        })
+        params.getPlaylists()
       })
+      navigate('/api/playlists')     
+
 }
 
 useEffect(()=>{
