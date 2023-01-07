@@ -6,6 +6,7 @@ import Navigation from './components/Navigation'
 import Index from './components/Index'
 import Annotation from './components/Annotation'
 import EditAnnotation from './components/EditAnnotation'
+import SongShow from './components/SongShow'
 import Login from './components/Login'
 import AddSong from './components/AddSong'
 import SongIndex from './components/SongIndex'
@@ -69,6 +70,7 @@ return (
         <Route index element={<Index searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists} getPlaylists={getPlaylists}/>}  /> 
         <Route path="new" element={<Annotation formData={formData} setFormData={setFormData} setPlaylists={setPlaylists} getPlaylists={getPlaylists}/>} />
         <Route path="edit/:id" element={<EditAnnotation playlists={playlists} getPlaylists={getPlaylists}/>} />
+        <Route path="songs/:id" element={<SongShow/>}/>
 
       </Route>
       <Route path="/" element={<Navigate to="/api/playlists" />}>
