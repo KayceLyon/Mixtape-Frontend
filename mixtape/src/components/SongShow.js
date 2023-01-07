@@ -33,10 +33,11 @@ useEffect(()=>{
   getSong()
   }, []);
   return (
-    <div>
+    <div className="song-show">
         
-        {song.title}<br/>
-        <img src={song.cover} width="300"/>
+        {song.title} by {song.artist}<br/>
+        <img className="song-img" src={song.cover} width="300"/>
+        <small>from the album {song.album}</small>
     </div>
   );
 }
