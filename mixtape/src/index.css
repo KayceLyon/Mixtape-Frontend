@@ -13,6 +13,33 @@ code {
     monospace;
 }
 
+.loginHeader {
+  text-align: center;
+  color: beige;
+  font-size: 80px;
+}
+
+.body {
+ background-color: rgb(64, 93, 155);
+ height: 1000px;;
+}
+
+.bg {
+  background-color: beige;
+  margin-top: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35%;
+  border: 2px solid rgb(64, 93, 155);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px grey;
+}
+
+.accountBtn {
+  margin-left: 25px;
+}
+
 .tape {
   margin: 30px;
 }
