@@ -77,7 +77,7 @@ const Cards = (params) => {
             </Card>
                 <Card className="tape2" key={params._id}> 
                   <Card.Text className="tapeText">
-                   By: {params.author}<br/> 
+                   Author: {params.author}<br/> 
                   
                   </Card.Text>  
             </Card>  
