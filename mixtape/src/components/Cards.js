@@ -77,7 +77,7 @@ const Cards = (params) => {
             </Card>
                 <Card className="tape2" key={params._id}> 
                   <Card.Text className="tapeText">
-                   Author: {params.author}<br/> 
+                   By: {params.author}<br/> 
                   
                   </Card.Text>  
             </Card>  
@@ -153,8 +153,9 @@ const Cards = (params) => {
             }
 
             <Button type='button' variant='success' className='summary-btn2'  onClick={handleSwitchBack}> Hide Playlist </Button>
-            <Button type='button' variant='success' className='summary-btn2' onClick={handleDelete}> Delete Playlist </Button>
-            <Button type='button' variant='success' className='summary-btn2' onClick={handleEdit}> Edit Playlist </Button>
+            <Button type='button' variant='success' className='edit-btn' onClick={handleEdit}> Edit Playlist </Button>
+            <Button type='button' variant='success' className='delete-btn' onClick={handleDelete}> Delete Playlist </Button>
+            
 
 
         </div> 

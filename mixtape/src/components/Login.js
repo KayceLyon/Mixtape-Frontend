@@ -120,7 +120,7 @@ axios.post('https://secret-beach-46849.herokuapp.com/api/useraccount', userObj).
                 </Form.Group>
             
      <Button input type='submit' value='Login' className='submitBtn'>Create Account</Button>
-     <Button onClick={handleToggleForm} className='accountBtn'>{toggleLogin ? 'Already Have an Account?' : null }</Button>
+     <Button onClick={handleToggleForm} className='accountBtn'>{toggleLogin ? 'Have an Account?' : null }</Button>
 
       </Form>
       </div> 
