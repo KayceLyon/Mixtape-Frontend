@@ -75,7 +75,7 @@ return (
       </Route>
       <Route path="/" element={<Navigate to="/api/playlists" />}>
       </Route>
-      <Route path = "/api/songs" element={<Navigation searchParams = {searchParams} setSearchParams = {setSearchParams} filteredSongs = {filteredSongs} setFilteredSongs = {setFilteredSongs} songs={songs} setSongs={setSongs}/>}>
+      <Route path = "/api/songs" element={<Navigation searchParams = {searchParams} setSearchParams = {setSearchParams} filteredSongs = {filteredSongs} setFilteredSongs = {setFilteredSongs} songs={songs} setSongs={setSongs} />}>
         <Route index element={<SongIndex songs = {songs} setSongs = {setSongs} filteredSongs = {filteredSongs} setFilteredSongs = {setFilteredSongs} />} />
         <Route path="new" element={<AddSong />} />
     </Route>
