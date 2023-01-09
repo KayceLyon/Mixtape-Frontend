@@ -92,7 +92,7 @@ axios.post('https://secret-beach-46849.herokuapp.com/api/useraccount', userObj).
     </Form.Group>
 
        
-        <Button input type='submit' value='Login' className='submitBtn'>Login</Button>
+        <Button type='submit' value='Login' className='submitBtn'>Login</Button>
         <Button onClick={handleToggleForm} className='accountBtn'> {toggleLogin ? null : 'Need an account?'}</Button>
         </Form>
 
@@ -119,7 +119,7 @@ axios.post('https://secret-beach-46849.herokuapp.com/api/useraccount', userObj).
                 
                 </Form.Group>
             
-     <Button input type='submit' value='Login' className='submitBtn'>Create Account</Button>
+     <Button type='submit' value='Login' className='submitBtn'>Create Account</Button>
      <Button onClick={handleToggleForm} className='accountBtn'>{toggleLogin ? 'Have an Account?' : null }</Button>
 
       </Form>
