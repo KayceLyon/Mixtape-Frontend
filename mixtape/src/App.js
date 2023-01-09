@@ -39,17 +39,18 @@ const App = () => {
 
  
 
-   const getPlaylists = () => { 
-    axios
-        .get('https://secret-beach-46849.herokuapp.com/api/playlists')
-        .then(
-            (response) => setPlaylists(response.data),
-            (response) => console.log(response.data),
-            (err) => console.error(err)
-            )
-        .catch((error) => console.error(error))
- }
+  const axiosRequest = [ 
+    'https://secret-beach-46849.herokuapp.com/api/playlists'
+]
 
+const getPlaylists = () => { 
+    Promise.all(axiosRequest.map((axiosRequest)=> axios.get(axiosRequest))).then(
+    axios.spread((...allData) => {
+      setPlaylists(allData[0].data);
+      setFilteredPlaylists((allData[0].data));
+    })
+    )
+   }
  
   const [currentUser, setCurrentUser] = useState(false)
 
