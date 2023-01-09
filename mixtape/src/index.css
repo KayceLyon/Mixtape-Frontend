@@ -13,6 +13,39 @@ code {
     monospace;
 }
 
+li {
+  list-style: none;
+}
+
+.loginHeader {
+  text-align: center;
+  color: beige;
+  font-size: 80px;
+}
+
+.body {
+ background-color: rgb(64, 93, 155);
+ height: 1000px;;
+}
+
+.bg {
+  background-color: beige;
+  margin-top: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35%;
+  border: 2px solid rgb(64, 93, 155);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px grey;
+}
+
+.accountBtn {
+  position: relative;
+  top: -5px;
+  margin-left: 25px;
+}
+
 .tape {
   margin: 30px;
 }
@@ -96,7 +129,7 @@ border: none;
   height: 25px;
 }
 
-.summary-btn2 {
+.delete-btn {
   position: relative;
   top: 0;
   left: 30%;
@@ -106,6 +139,32 @@ border: none;
   background-color: lightcoral;
   width: 40%;
   height: 25px;
+}
+
+.edit-btn {
+  position: relative;
+  top: 0;
+  left: 30%;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  background-color: lightseagreen;
+  width: 40%;
+  height: 25px;
+  margin-bottom: 5px;
+}
+
+.summary-btn2 {
+  position: relative;
+  top: 0;
+  left: 30%;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  background-color: lightskyblue;
+  width: 40%;
+  height: 25px;
+  margin-bottom: 5px;
 }
 
 @media (max-width: 769px) {
@@ -124,12 +183,24 @@ border: none;
   }
 }
 
+.accountBtn {
+  position: relative;
+  left: -22px;
+  margin-top: 10px;
+}
+
 @media (max-width: 400px) {
 
   .tapeText {
     font-size: 18px;;
     top: 28%;
     }
+
+  .accountBtn {
+    position: relative;
+    left: -22px;
+    margin-top: 10px;
+  }
 
 
 }
