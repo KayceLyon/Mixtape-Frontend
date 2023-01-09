@@ -14,15 +14,15 @@ const Navigation = (params) => {
 
 
 
-const handleLogout = (event) => {
-  event.preventDefault()
-  params.setCurrentUser(false)
-}
+// const handleLogout = (event) => {
+//   event.preventDefault()
+//   params.setCurrentUser(false)
+// }
 
 
-useEffect(()=>{
-  params.getPlaylists()
-  }, []);
+// useEffect(()=>{
+//   params.getPlaylists()
+//   }, []);
   
 return (
 
@@ -44,7 +44,7 @@ return (
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-start flex-grow-1 pe 3">
-                <Nav.Link><Button onClick={handleLogout}>Logout</Button></Nav.Link>
+                {/* <Nav.Link><Button onClick={handleLogout}>Logout</Button></Nav.Link> */}
                 </Nav>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
              <Nav.Link as={Link} to={"/api/playlists/new"} >Add Playlist</Nav.Link>

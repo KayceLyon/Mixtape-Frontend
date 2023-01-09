@@ -3,6 +3,16 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 
 function SongCards(params) {
+
+// const handleChange = (event)=> {
+//     console.log(params);
+//         const {name, value, type, checked} = event.target
+//         params.setSongs(prevSongs => ({
+//             ...prevSongs,
+//             [name]: type === "checkbox" ? checked: value
+//         })) 
+//     }
+
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={params.cover} />

@@ -58,12 +58,12 @@ return (
 
   <Routes>
     
-    <Route path = 'api/playlists' element={<Login setCurrentUser={setCurrentUser} />} >
+    {/* <Route path = 'api/playlists' element={<Login setCurrentUser={setCurrentUser} />} >
     </Route>
 
     { currentUser === true ?  
   
- <>
+ <> */}
 
 <Route path = "/api/playlists" element={<Navigation getPlaylists={getPlaylists} searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists} setCurrentUser={setCurrentUser}/>}>
         <Route index element={<Index searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists} getPlaylists={getPlaylists}/>}  /> 
@@ -78,10 +78,10 @@ return (
         <Route path="new" element={<AddSong formData = {formData} setFormData = {setFormData} />} />
     </Route>
     
-  </>
+  {/* </>
 :
 null
-}
+} */}
 
 </Routes>
 
