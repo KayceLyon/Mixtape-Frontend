@@ -39,17 +39,18 @@ const App = () => {
 
  
 
-   const getPlaylists = () => { 
-    axios
-        .get('https://secret-beach-46849.herokuapp.com/api/playlists')
-        .then(
-            (response) => setPlaylists(response.data),
-            (response) => console.log(response.data),
-            (err) => console.error(err)
-            )
-        .catch((error) => console.error(error))
- }
+  const axiosRequest = [ 
+    'https://secret-beach-46849.herokuapp.com/api/playlists'
+]
 
+const getPlaylists = () => { 
+    Promise.all(axiosRequest.map((axiosRequest)=> axios.get(axiosRequest))).then(
+    axios.spread((...allData) => {
+      setPlaylists(allData[0].data);
+      setFilteredPlaylists((allData[0].data));
+    })
+    )
+   }
  
   const [currentUser, setCurrentUser] = useState(false)
 
@@ -59,12 +60,12 @@ return (
 
   <Routes>
     
-    {/* <Route path = 'api/playlists' element={<Login setCurrentUser={setCurrentUser} />} >
+    <Route path = 'api/playlists' element={<Login setCurrentUser={setCurrentUser} />} >
     </Route>
 
     { currentUser === true ?  
   
- <> */}
+ <>
 
 <Route path = "/api/playlists" element={<Navigation getPlaylists={getPlaylists} searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists} setCurrentUser={setCurrentUser}/>}>
         <Route index element={<Index searchParams = {searchParams} setSearchParams = {setSearchParams} filteredPlaylists = {filteredPlaylists} setFilteredPlaylists = {setFilteredPlaylists} playlists={playlists} setPlaylists={setPlaylists} getPlaylists={getPlaylists}/>}  /> 
@@ -77,13 +78,13 @@ return (
       </Route>
       <Route path = "/api/songs" element={<Navigation searchParams = {searchParams} setSearchParams = {setSearchParams} filteredSongs = {filteredSongs} setFilteredSongs = {setFilteredSongs} songs={songs} setSongs={setSongs} />}>
         <Route index element={<SongIndex songs = {songs} setSongs = {setSongs} filteredSongs = {filteredSongs} setFilteredSongs = {setFilteredSongs} />} />
-        <Route path="new" element={<AddSong formData = {formData} setFormData = {setFormData} />} />
+        <Route path="new" element={<AddSong />} />
     </Route>
     
-  {/* </>
+  </>
 :
 null
-} */}
+}
 
 </Routes>
 

@@ -8,22 +8,9 @@ import '../App.css'
 import Playlists from './Playlists'
 
 const Index = (params) => {
-
-  const axiosRequest = [ 
-    'https://secret-beach-46849.herokuapp.com/api/playlists'
-]
-
-const getPlaylists = () => { 
-    Promise.all(axiosRequest.map((axiosRequest)=> axios.get(axiosRequest))).then(
-    axios.spread((...allData) => {
-      params.setPlaylists(allData[0].data);
-      params.setFilteredPlaylists((allData[0].data));
-    })
-    )
-   }
  
   useEffect(()=>{
-  getPlaylists()
+  params.getPlaylists()
   }, []);
 
   return (
@@ -31,7 +18,7 @@ const getPlaylists = () => {
         <main id="Index">
           <h1>Playlists</h1>
             <Row xs={1} md={2} lg={3} className="g-4">
-                 {params.playlists.map((playlist)=>{ 
+                 {params.filteredPlaylists.map((playlist)=>{ 
                    return(
                         <Col key={playlist.id}>
                              <Playlists 
