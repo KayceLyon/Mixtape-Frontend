@@ -34,10 +34,9 @@ useEffect(()=>{
   }, []);
   return (
     <div className="song-show">
-        
-        {song.title} by {song.artist}<br/>
+        <h1>"{song.title}" by {song.artist}</h1><br/>
         <img className="song-img" src={song.cover} width="300"/>
-        <small>from the album {song.album}</small>
+        <h2>From the album: <em>{song.album}</em></h2>
     </div>
   );
 }
